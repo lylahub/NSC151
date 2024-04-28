@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>lab1</title>
+<meta name="generator" content="MATLAB 24.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-04-10">
+<meta name="DC.source" content="lab1.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#2">9</a>
+</li>
+<li>
+<a href="#3">10</a>
+</li>
+</ul>
+</div>
+<pre class="codeinput">
+<span class="comment">% a) Learning POD Summary</span>
+<span class="comment">% POD members:</span>
+<span class="comment">% Lab struggle:</span>
+<span class="comment">% discussion with POD help:</span>
+
+
+<span class="comment">% 1.5.2</span>
+M = [1, 3, 5, 7, 9; 2, 4, 6, 8, 10]
+<span class="comment">% 1. What is M(2,3)? Ans: M(2,3) = 6</span>
+M(2,3)
+<span class="comment">% 2. What will happen if you type MP(2,3)</span>
+<span class="comment">% Ans: there is an error message</span>
+<span class="comment">% Index in position 2 exceeds array bounds. Index must not exceed 2.</span>
+MP = M'
+MP(2, 3)
+<span class="comment">% 3. What will happen if type MP(4,2)? Ans: 8</span>
+MP(4,2);
+
+
+<span class="comment">% 1.5.4</span>
+<span class="comment">% 4. Create a row vector fo the numbers 1-100 in reverse order</span>
+A = flip(1:100)
+
+<span class="comment">% 5. 10x10 matrix with 5 for all diagonal entries and -3 for off diagonal</span>
+<span class="comment">%    entries</span>
+B = eye(10,10) * 8 + (-3) * ones(10,10)
+
+<span class="comment">% 6. Create a 5x3 matrix comprising random numbers selected uniformly from</span>
+<span class="comment">%    the range 10 to 20</span>
+C = 10*rand(5,3) + 10
+
+<span class="comment">% 7. Create a vector of length 20, whose first 15 numbers are randomly</span>
+<span class="comment">%    chosen between 2 and 3, and whose last 5 numbers are randomly chosen</span>
+<span class="comment">%    between -1 and -2</span>
+vector = [2 + (3-2).*rand(1,15), -2 + (-1+2).*rand(1,5)];
+
+<span class="comment">% 8. plot y = 3x for a range of x from -5 to +5 with steps of 0.1.</span>
+<span class="comment">%    On the same graph, in a different color, plot y = 4x. Label the axes</span>
+<span class="comment">%    and indicate with a legend which color corresponds to which line</span>
+x = -5:0.1:5;
+y1 = 3 * x;
+plot(x,y1);
+
+hold <span class="string">on</span>
+y2 = 4 * x;
+plot(x,y2);
+legend(<span class="string">"y1=3x"</span>, <span class="string">"y2=4x"</span>);
+xlabel(<span class="string">"x"</span>);
+ylabel(<span class="string">"y"</span>);
+
+hold <span class="string">off</span>
+</pre>
+<pre class="codeoutput">
+M =
+
+     1     3     5     7     9
+     2     4     6     8    10
+
+
+ans =
+
+     6
+
+
+MP =
+
+     1     2
+     3     4
+     5     6
+     7     8
+     9    10
+
+</pre>
+<pre class="codeoutput error">Index in position 2 exceeds array bounds. Index must not exceed 2.
+
+Error in lab1 (line 15)
+MP(2, 3)
+</pre>
+<h2 id="2">9</h2>
+<p>9. Write a code that will plot y = x^2 - 3 for a range of x from -3 to +3 with steps of 0.1. Save the code as an .m file and run that file from the command window</p>
+<pre class="codeinput">x = -3:0.1:3;
+y = x .^ 2 - 3;
+plot(x, y);
+xlabel(<span class="string">"x"</span>);
+ylabel(<span class="string">"y"</span>);
+</pre>
+<h2 id="3">10</h2>
+<p>1.5.8 10. Plot a rectified sine wave (negative values are fixed at zero) over the range of values -pi &lt;= x &lt;= pi</p>
+<pre class="codeinput">x = linspace(-pi, pi, 1000);
+y = sin(x);
+y_rectified = max(y, 0);
+plot(x, y_rectified);
+
+<span class="comment">% 11. Write a code to indicate whether the cube root of 6 is greater than</span>
+<span class="comment">%     the square root of 3.</span>
+cubeRoot = nthroot(6, 3);
+squareRoot = sqrt(3);
+<span class="keyword">if</span> cubeRoot &gt; squareRoot
+    disp(<span class="string">'The cube root of 6 is greater than the square root of 3.'</span>);
+<span class="keyword">else</span>
+    disp(<span class="string">'The cube root of 6 is not greater than the square root of 3.'</span>);
+<span class="keyword">end</span>
+
+<span class="comment">% 1.5.9</span>
+<span class="comment">% 12. Sum all the cubed positive integers up to 15^3</span>
+sum = 0;
+<span class="keyword">for</span> i = 1:1:15
+    sum = sum + i^3;
+<span class="keyword">end</span>
+
+<span class="comment">% 13. find the positive integer n such that n + n^2 + n^3 + n^4 = 88740</span>
+n = 1;
+<span class="keyword">while</span> (n + n^2 + n^3 + n^4 ~= 88740)
+    n = n+1;
+<span class="keyword">end</span>
+disp(n);
+
+<span class="comment">% 1.5.10</span>
+<span class="comment">% 14a. Write a function that takes as input a single vector and returns the</span>
+<span class="comment">% sum of the squares of its elements as its single output.</span>
+<span class="keyword">function</span> y = square_element_sum(x)
+    y = sum(x .^ 2);
+<span class="keyword">end</span>
+
+<span class="comment">% 14b. Use that function to sum the square of the numbers from 27 to 37</span>
+<span class="comment">% inclusive.</span>
+sum_vector = square_element_sum(27:37);
+disp(sum_vector);
+
+<span class="comment">% 15. Write a function that takes as input a single vector of numbers and</span>
+<span class="comment">% returns the mean, the mode, and the median as three separate variables</span>
+<span class="comment">% for its output.</span>
+<span class="keyword">function</span> [meanVal, modeVal, medianVal] = mean_mode_median(vector)
+    meanVal = mean(vector);
+    modeVal = mode(vector);
+    medianVal = median(vector);
+<span class="keyword">end</span>
+
+test_vector = [1, 2, 3, 4, 5];
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+% a) Learning POD Summary
+% POD members:
+% Lab struggle:
+% discussion with POD help: 
+
+
+% 1.5.2
+M = [1, 3, 5, 7, 9; 2, 4, 6, 8, 10]
+% 1. What is M(2,3)? Ans: M(2,3) = 6
+M(2,3)
+% 2. What will happen if you type MP(2,3)
+% Ans: there is an error message
+% Index in position 2 exceeds array bounds. Index must not exceed 2.
+MP = M'
+MP(2, 3)
+% 3. What will happen if type MP(4,2)? Ans: 8
+MP(4,2);
+
+
+% 1.5.4
+% 4. Create a row vector fo the numbers 1-100 in reverse order
+A = flip(1:100)
+
+% 5. 10x10 matrix with 5 for all diagonal entries and -3 for off diagonal
+%    entries
+B = eye(10,10) * 8 + (-3) * ones(10,10)
+
+% 6. Create a 5x3 matrix comprising random numbers selected uniformly from
+%    the range 10 to 20
+C = 10*rand(5,3) + 10
+
+% 7. Create a vector of length 20, whose first 15 numbers are randomly 
+%    chosen between 2 and 3, and whose last 5 numbers are randomly chosen 
+%    between -1 and -2
+vector = [2 + (3-2).*rand(1,15), -2 + (-1+2).*rand(1,5)];
+
+% 8. plot y = 3x for a range of x from -5 to +5 with steps of 0.1.
+%    On the same graph, in a different color, plot y = 4x. Label the axes
+%    and indicate with a legend which color corresponds to which line
+x = -5:0.1:5;
+y1 = 3 * x;
+plot(x,y1);
+
+hold on
+y2 = 4 * x;
+plot(x,y2);
+legend("y1=3x", "y2=4x");
+xlabel("x");
+ylabel("y");
+
+hold off
+
+%% 9
+% 9. Write a code that will plot y = x^2 - 3 for a range of x from -3 to +3
+%    with steps of 0.1. Save the code as an .m file and run that file from
+%    the command window
+x = -3:0.1:3;
+y = x .^ 2 - 3;
+plot(x, y);
+xlabel("x");
+ylabel("y");
+
+%% 10
+% 1.5.8
+% 10. Plot a rectified sine wave (negative values are fixed at zero) over
+% the range of values -pi <= x <= pi
+x = linspace(-pi, pi, 1000);
+y = sin(x);
+y_rectified = max(y, 0);
+plot(x, y_rectified);
+
+% 11. Write a code to indicate whether the cube root of 6 is greater than
+%     the square root of 3.
+cubeRoot = nthroot(6, 3);
+squareRoot = sqrt(3);
+if cubeRoot > squareRoot
+    disp('The cube root of 6 is greater than the square root of 3.');
+else
+    disp('The cube root of 6 is not greater than the square root of 3.');
+end
+
+% 1.5.9
+% 12. Sum all the cubed positive integers up to 15^3
+sum = 0;
+for i = 1:1:15
+    sum = sum + i^3;
+end
+
+% 13. find the positive integer n such that n + n^2 + n^3 + n^4 = 88740
+n = 1;
+while (n + n^2 + n^3 + n^4 ~= 88740)
+    n = n+1;
+end
+disp(n);
+
+% 1.5.10
+% 14a. Write a function that takes as input a single vector and returns the
+% sum of the squares of its elements as its single output.
+function y = square_element_sum(x)
+    y = sum(x .^ 2);
+end
+
+% 14b. Use that function to sum the square of the numbers from 27 to 37
+% inclusive.
+sum_vector = square_element_sum(27:37);
+disp(sum_vector);
+
+% 15. Write a function that takes as input a single vector of numbers and
+% returns the mean, the mode, and the median as three separate variables
+% for its output.
+function [meanVal, modeVal, medianVal] = mean_mode_median(vector)
+    meanVal = mean(vector);
+    modeVal = mode(vector);
+    medianVal = median(vector);
+end
+
+test_vector = [1, 2, 3, 4, 5];
+##### SOURCE END #####
+-->
+</body>
+</html>
